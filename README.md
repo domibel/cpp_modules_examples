@@ -15,6 +15,7 @@ You need at least CMake 4.1, the Ninja Generator and GCC 15+ or Clang 19+
 | example2_import_glm | importing a third-party module | 20 |
 | example3_import_custom | writing your own module | 20 |
 | example4_import_vulkan | importing a third-party module with partitions | 23 |
+| example5_import_wgpu | importing a pre-built module target requiring C++20, mixed with a C++23 consumer | 23 |
 
 ## Install dependencies
 
@@ -33,6 +34,9 @@ sudo apt install libglm-dev
 
 # example4 import vulkan
 sudo apt install libvulkan-dev
+
+# example5 import wgpu
+sudo apt install libwebgpu-dawn-dev
 ```
 
 ## Build
@@ -48,9 +52,13 @@ CC=clang CXX=clang++ cmake -B build -S example -G Ninja && cmake --build build
 ./build/hello
 ```
 
-## Check which packages contain .cppm files
+## Check which packages contain C++ module interface files (.cppm and .ixx are the same thing, the extension just isn't standardized yet)
 
+### .cppm
 https://packages.debian.org/search?searchon=contents&keywords=cppm&mode=path&suite=testing&arch=amd64
+
+### .ixx
+https://packages.debian.org/search?searchon=contents&keywords=ixx&mode=path&suite=testing&arch=amd64
 
 
 ## Interesting Tracker for C++20 Modules Support
