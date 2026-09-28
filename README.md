@@ -45,8 +45,11 @@ sudo apt install libwebgpu-dawn-dev
 # GCC
 cmake -B build -S example -G Ninja && cmake --build build
 
-# Clang
+# Clang with GCC's libstdc++
 CC=clang CXX=clang++ cmake -B build -S example -G Ninja && cmake --build build
+
+# Clang with libc++ (if this fails add `-DCMAKE_CXX_STDLIB_MODULES_JSON=/usr/lib/llvm-21/lib/libc++.modules.json`)
+CC=clang CXX=clang++ CXXFLAGS=-stdlib=libc++ LDFLAGS=-stdlib=libc++ cmake -B build -S example -G Ninja && cmake --build build
 
 # run
 ./build/hello
